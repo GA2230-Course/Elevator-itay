@@ -47,7 +47,6 @@ public class ElevatorIOCTRE implements ElevatorIO{
         double rawPosition = rawPositionSignal.getValueAsDouble();
         inputs.positionMeters = ElevatorConstants.rotationsToMeters(rawPosition);
         inputs.setpointMeters = setPoint;
-
         inputs.profileReferenceMeters = ElevatorConstants.rotationsToMeters(referenceSignal.getValueAsDouble());
         inputs.profileErrorMeters = inputs.profileReferenceMeters - inputs.positionMeters;
         
