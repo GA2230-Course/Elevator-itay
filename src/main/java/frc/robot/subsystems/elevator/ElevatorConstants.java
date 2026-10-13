@@ -1,5 +1,7 @@
 package frc.robot.subsystems.elevator;
 
+import java.security.cert.X509CRL;
+
 import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
 import com.ctre.phoenix6.configs.FeedbackConfigs;
 import com.ctre.phoenix6.configs.MotionMagicConfigs;
@@ -8,6 +10,7 @@ import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.SoftwareLimitSwitchConfigs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.signals.GravityTypeValue;
+import com.ctre.phoenix6.signals.InvertedValue;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import frc.robot.subsystems.elevator.ElevatorSubsystem.ElevatorState;
@@ -40,7 +43,8 @@ public class ElevatorConstants {
                                         .withReverseSoftLimitEnable(true)
                                         .withReverseSoftLimitThreshold(metersToRotations(MIN_HEIGHT_METERS)))
                         .withMotorOutput(new MotorOutputConfigs()
-                                        .withNeutralMode(NeutralModeValue.Brake))
+                                        .withNeutralMode(NeutralModeValue.Brake).withInverted(InvertedValue.Clockwise_Positive))
+                                        
                         .withMotionMagic(new MotionMagicConfigs().withMotionMagicCruiseVelocity(metersToRotations(1.5))
                                         .withMotionMagicAcceleration(metersToRotations(3.0)))
                         .withCurrentLimits(new CurrentLimitsConfigs()
